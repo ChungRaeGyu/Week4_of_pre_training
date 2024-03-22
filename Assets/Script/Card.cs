@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    int idx =0;
+    public int idx =0;
+    
+    public GameObject front;
+    public GameObject back;
 
-    public SpriteRenderer front;
+    public Animator anim;
+    
+    public SpriteRenderer frontImage;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +27,33 @@ public class Card : MonoBehaviour
     }
     public void Setting(int number){
         idx = number;
-        front.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+    }
+    public void OpenCard(){
+        anim.SetBool("isOpen", true);
+        front.SetActive(true);
+        back.SetActive(false);
+
+        if(GameManager.Instance.firstCard==null){
+            GameManager.Instance.firstCard = this;
+        }else{
+            GameManager.Instance.secondCard = this;
+            GameManager.Instance.Matched();
+        }
+    }
+    public void DestoryCard(){
+        Invoke("DestoryCardInvoke",1.0f);
+    }
+
+    void DestoryCardInvoke(){
+        Destroy(gameObject);
+    }
+    public void CloseCard(){
+        Invoke("CloseCardInvoke", 1.0f);
+    }
+    void CloseCardInvoke(){
+        anim.SetBool("isOpen", false);
+        front.SetActive(false);
+        back.SetActive(true);
     }
 }

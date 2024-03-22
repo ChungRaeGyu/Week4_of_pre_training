@@ -232,7 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d8cb0d35960bb49b848c158be4b224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  front: {fileID: 1146085437362667993}
+  front: {fileID: 1146085437362667995}
+  back: {fileID: 1146085439035554299}
+  anim: {fileID: 7657362034206140566}
+  frontImage: {fileID: 1146085437362667993}
 --- !u!95 &7657362034206140566
 Animator:
   serializedVersion: 5
@@ -377,7 +380,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1146085438879718090}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3910639101325026036}
+        m_TargetAssemblyTypeName: Card, Assembly-CSharp
+        m_MethodName: OpenCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1146085439035554299
 GameObject:
   m_ObjectHideFlags: 0
